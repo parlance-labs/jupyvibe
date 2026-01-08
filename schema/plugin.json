@@ -1,0 +1,38 @@
+{
+  "title": "Evals-Jup Settings",
+  "description": "Settings for the Evals-Jup extension",
+  "type": "object",
+  "jupyter.lab.setting-icon": "ui-components:add",
+  "jupyter.lab.setting-icon-label": "Evals-Jup",
+  "properties": {
+    "provider": {
+      "type": "string",
+      "title": "Provider",
+      "description": "The AI provider to use",
+      "default": "anthropic",
+      "enum": ["openai", "anthropic", "gemini"],
+      "enumNames": ["OpenAI", "Anthropic", "Google (Gemini)"]
+    },
+    "defaultModel": {
+      "type": "string",
+      "title": "Default Model",
+      "description": "The default AI model to use for prompt cells (provider-specific)",
+      "default": "claude-sonnet-4-20250514"
+    },
+    "maxToolSteps": {
+      "type": "integer",
+      "title": "Maximum Tool Steps",
+      "description": "Maximum number of tool execution iterations per prompt",
+      "default": 5,
+      "minimum": 1,
+      "maximum": 20
+    },
+    "showConvertButton": {
+      "type": "boolean",
+      "title": "Show Convert Button",
+      "description": "Show the 'Convert to Cells' button on AI responses",
+      "default": true
+    }
+  },
+  "additionalProperties": false
+}

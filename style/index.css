@@ -1,0 +1,223 @@
+/**
+ * Evals-Jup extension styles
+ */
+
+/* Prompt cell styling */
+.evals-jup-prompt-cell {
+  border-left: 4px solid var(--jp-brand-color1, #1976d2);
+  background-color: var(--jp-layout-color1, #ffffff);
+  margin: 8px 0;
+}
+
+.evals-jup-prompt-cell .jp-Cell-inputWrapper {
+  background-color: rgba(25, 118, 210, 0.05);
+}
+
+.evals-jup-prompt-cell::before {
+  content: '🤖 AI Prompt';
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--jp-brand-color1, #1976d2);
+  padding: 4px 12px;
+  background-color: rgba(25, 118, 210, 0.1);
+  border-bottom: 1px solid rgba(25, 118, 210, 0.2);
+}
+
+/* Prompt output cell styling */
+.evals-jup-prompt-output {
+  border-left: 4px solid var(--jp-success-color1, #4caf50);
+  background-color: var(--jp-layout-color1, #ffffff);
+  margin: 0 0 8px 0;
+}
+
+.evals-jup-prompt-output .jp-Cell-inputWrapper {
+  background-color: rgba(76, 175, 80, 0.05);
+}
+
+.evals-jup-prompt-output::before {
+  content: '💬 AI Response';
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--jp-success-color1, #4caf50);
+  padding: 4px 12px;
+  background-color: rgba(76, 175, 80, 0.1);
+  border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+/* Variable reference highlighting */
+.evals-jup-variable-ref {
+  color: var(--jp-warn-color1, #ff9800);
+  font-weight: 600;
+  background-color: rgba(255, 152, 0, 0.1);
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+/* Function reference highlighting */
+.evals-jup-function-ref {
+  color: var(--jp-info-color1, #00bcd4);
+  font-weight: 600;
+  background-color: rgba(0, 188, 212, 0.1);
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+/* Loading indicator */
+.evals-jup-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--jp-ui-font-color2, #616161);
+  font-size: 13px;
+  padding: 8px 0;
+}
+
+.evals-jup-loading::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--jp-border-color2, #e0e0e0);
+  border-top-color: var(--jp-brand-color1, #1976d2);
+  border-radius: 50%;
+  animation: evals-jup-spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes evals-jup-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Convert to Cells button container */
+.evals-jup-convert-button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 6px 12px;
+  background: var(--jp-layout-color2, #f5f5f5);
+  border-top: 1px solid var(--jp-border-color2, #e0e0e0);
+}
+
+.evals-jup-convert-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--jp-ui-font-color1, #333);
+  background: var(--jp-layout-color1, #fff);
+  border: 1px solid var(--jp-border-color1, #ccc);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.evals-jup-convert-button:hover {
+  background: var(--jp-layout-color3, #eee);
+  border-color: var(--jp-brand-color1, #1976d2);
+}
+
+.evals-jup-convert-button:active {
+  background: var(--jp-brand-color3, #bbdefb);
+}
+
+/* Dark theme adjustments */
+[data-jp-theme-light='false'] .evals-jup-prompt-cell {
+  background-color: var(--jp-layout-color1, #1e1e1e);
+}
+
+[data-jp-theme-light='false'] .evals-jup-prompt-cell .jp-Cell-inputWrapper {
+  background-color: rgba(25, 118, 210, 0.1);
+}
+
+[data-jp-theme-light='false'] .evals-jup-prompt-output {
+  background-color: var(--jp-layout-color1, #1e1e1e);
+}
+
+[data-jp-theme-light='false'] .evals-jup-prompt-output .jp-Cell-inputWrapper {
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+[data-jp-theme-light='false'] .evals-jup-convert-button-container {
+  background: var(--jp-layout-color2, #2d2d2d);
+}
+
+[data-jp-theme-light='false'] .evals-jup-convert-button {
+  color: var(--jp-ui-font-color1, #e0e0e0);
+  background: var(--jp-layout-color1, #1e1e1e);
+  border-color: var(--jp-border-color1, #555);
+}
+
+[data-jp-theme-light='false'] .evals-jup-convert-button:hover {
+  background: var(--jp-layout-color3, #3d3d3d);
+}
+
+/* Model Picker styles */
+.evals-jup-model-picker-widget {
+  display: flex;
+  align-items: center;
+  margin: 0 4px;
+}
+
+.evals-jup-model-picker {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.evals-jup-provider-select,
+.evals-jup-model-select {
+  height: 24px;
+  padding: 0 6px;
+  font-size: 12px;
+  border: 1px solid var(--jp-border-color1, #ccc);
+  border-radius: 3px;
+  background: var(--jp-layout-color1, #fff);
+  color: var(--jp-ui-font-color1, #333);
+  cursor: pointer;
+}
+
+.evals-jup-provider-select {
+  min-width: 90px;
+}
+
+.evals-jup-model-select {
+  min-width: 180px;
+  max-width: 280px;
+}
+
+.evals-jup-provider-select:hover,
+.evals-jup-model-select:hover {
+  border-color: var(--jp-brand-color1, #1976d2);
+}
+
+.evals-jup-provider-select:focus,
+.evals-jup-model-select:focus {
+  outline: none;
+  border-color: var(--jp-brand-color1, #1976d2);
+  box-shadow: 0 0 0 1px var(--jp-brand-color1, #1976d2);
+}
+
+.evals-jup-model-picker-loading {
+  font-size: 11px;
+  color: var(--jp-ui-font-color2, #666);
+  padding: 0 8px;
+}
+
+.evals-jup-model-picker-error {
+  font-size: 11px;
+  color: var(--jp-error-color1, #d32f2f);
+  padding: 0 8px;
+  cursor: help;
+}
+
+/* Dark theme */
+[data-jp-theme-light='false'] .evals-jup-provider-select,
+[data-jp-theme-light='false'] .evals-jup-model-select {
+  background: var(--jp-layout-color2, #2d2d2d);
+  color: var(--jp-ui-font-color1, #e0e0e0);
+  border-color: var(--jp-border-color1, #555);
+}

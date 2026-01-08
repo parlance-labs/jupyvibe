@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "yarn"
+
+      - name: Install Python dependencies
+        run: |
+          pip install jupyterlab>=4.0.0
+          pip install -e ".[test]"
+
+      - name: Install Node dependencies
+        run: yarn install --immutable
+
+      - name: Build extension
+        run: |
+          npx tsc --sourceMap
+          jupyter labextension build --development True .
+
+      - name: Run TypeScript tests
+        run: yarn test
+
+      - name: Run Python mock/unit tests
+        run: |
+          python -m pytest tests/test_handlers.py tests/test_parser.py \
+            tests/test_api_integration.py tests/test_kernel_integration.py \
+            tests/test_tool_loop.py -v
+
+
